@@ -14,8 +14,8 @@ import java.util.List;
 @Document(collection = "recommendations")
 @Data
 @Builder
-@NoArgsConstructor  //to be removed
-@AllArgsConstructor  //to be removed, used to save data in database when using Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Recommendation {
 
     @Id

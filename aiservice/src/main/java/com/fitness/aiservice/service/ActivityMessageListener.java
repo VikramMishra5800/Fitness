@@ -22,7 +22,7 @@ public class ActivityMessageListener {
         log.info("Received Activity: {}", activity.getUserId());
         Recommendation recommendation = activityAiService.generateRecommendation(activity);
 
-        log.info("Saving Data to Recommendation table: {}", recommendation.getId());
+        log.info("Saving Data to Recommendation table: {}", recommendation.getUserId());
         recommendationRepository.save(recommendation);
         log.info("Data saved successfully to Recommendation table: {}", recommendation.getId());
     }
