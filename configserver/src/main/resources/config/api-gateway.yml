@@ -9,6 +9,11 @@ eureka:
     prefer-ip-address: true
 
 spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:8181/realms/Fitness-Realm/protocol/openid-connect/certs
   cloud:
     gateway:
       server:

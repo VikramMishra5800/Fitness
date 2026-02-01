@@ -1,4 +1,4 @@
-package com.fitness.userservice.dto;
+package com.example.gateway.user;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
