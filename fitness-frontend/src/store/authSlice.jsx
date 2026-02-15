@@ -25,6 +25,8 @@ export const authSlice = createSlice({
       localStorage.removeItem('token');
       localStorage.removeItem('user');
       localStorage.removeItem('userId');
+
+      sessionStorage.clear(); // Clear session storage on logout
     }
     
   },

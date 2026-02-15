@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @RequiredArgsConstructor
 public class ActivityService {
@@ -44,6 +47,10 @@ public class ActivityService {
             e.printStackTrace();
         }
 
+        return mapToResponse(savedActivity);
+    }
+
+    private ActivityResponse mapToResponse(Activity savedActivity){
         return ActivityResponse.builder()
                 .id(savedActivity.getId())
                 .userId(savedActivity.getUserId())
@@ -55,5 +62,13 @@ public class ActivityService {
                 .createdAt(savedActivity.getCreatedAt())
                 .updatedAt(savedActivity.getUpdatedAt())
                 .build();
+    }
+
+
+    public List<ActivityResponse> getUserActivities(String userId) {
+        List<Activity> activities = activityRepo.findByUserId(userId);
+        return activities.stream()
+                .map(this::mapToResponse)
+                .collect(Collectors.toList());
     }
 }
